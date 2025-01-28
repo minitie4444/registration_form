@@ -52,6 +52,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
                 child:Text(
                   isRegistered?"Registration Successful":"Register me",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                  
 
                 ),
               ),
