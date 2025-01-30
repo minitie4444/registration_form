@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:registration_form/screens/details_Screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   @override
@@ -40,27 +41,43 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             GestureDetector(
               onTap: () {
                 setState(() {
-                  isRegistered = !isRegistered ;
+                  isRegistered = !isRegistered;
                 });
-
               },
               child: Container(
-                padding:const EdgeInsets.all(20) ,
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: isRegistered? Colors.greenAccent:Colors.blueAccent,
+                  color: isRegistered ? Colors.greenAccent : Colors.blueAccent,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child:Text(
-                  isRegistered?"Registration Successful":"Register me",
-                  style: TextStyle(
+                child: Text(
+                  isRegistered ? "Registration Successful" : "Register me",
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                   ),
-                  
-
                 ),
               ),
             ),
+            const SizedBox(
+              height: 30,
+            ),
+            if (isRegistered)
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder:(context)=>DetailsScreen(
+                          firstname: firstNameController.text,
+                          lastname: lastNameController.text,
+                          email: emailController.text,
+
+                          
+                        ),
+                        ),
+                        );
+                  },
+                  child: const Text("View registration details")
+                  )
           ],
         ),
       ),
